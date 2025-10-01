@@ -1,0 +1,27 @@
+﻿namespace Order.WebAPI.Models.DTOs;
+
+public class OrderItemDto
+{
+    public int Id { get; set; }
+    public int OrderId { get; set; }
+    public string ProductName { get; set; } = string.Empty;
+    public string ProductSku { get; set; } = string.Empty;
+    public decimal UnitPrice { get; set; }
+    public int Quantity { get; set; }
+    public decimal TotalPrice { get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+
+public class CreateOrderItemDto
+{
+    public string ProductSku { get; set; } = string.Empty;
+    public string ProductName { get; set; } = string.Empty;
+    public decimal UnitPrice { get; set; }
+    public int Quantity { get; set; }
+}
+
+public class UpdateOrderItemDto
+{
+    public int Quantity { get; set; }
+    public decimal UnitPrice { get; set; }
+}

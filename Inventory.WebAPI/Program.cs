@@ -62,6 +62,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// gRPC Services
+builder.Services.AddGrpc();
+//builder.Services.AddSingleton<IInventoryGrpcClient, InventoryGrpcClient>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
