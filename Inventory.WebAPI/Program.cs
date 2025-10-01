@@ -1,5 +1,13 @@
 using System.Text;
+using Inventory.WebAPI.Abstractions.Repositories;
+using Inventory.WebAPI.Abstractions.Services;
+using Inventory.WebAPI.Data;
+using Inventory.WebAPI.Helpers;
+using Inventory.WebAPI.Repositories;
+using Inventory.WebAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +17,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+// Repositories
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IWareHouseRepository, WareHouseRepository>();
+builder.Services.AddScoped<IStackRepository, StackRepository>();
+
+// Services
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IWareHouseService, WareHouseService>();
+builder.Services.AddScoped<IStackService, StackService>();
 
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -42,5 +68,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    context.Database.EnsureCreated();
+
+    // You can add seed data here if needed
+}
 
 app.Run();
