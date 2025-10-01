@@ -1,6 +1,6 @@
 @Identity.WebAPI_HostAddress = http://localhost:5018
 
-GET {{Identity.WebAPI_HostAddress}}/weatherforecast/
-Accept: application/json
+# GET {{Identity.WebAPI_HostAddress}}/weatherforecast/
+# Accept: application/json
 
 ###
