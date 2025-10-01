@@ -26,7 +26,7 @@ public class InventoryGrpcClient : IInventoryGrpcClient, IDisposable
     {
         if (_client == null)
         {
-            var inventoryServiceUrl = _configuration["InventoryService:Url"] ?? "https://localhost:7001";
+            var inventoryServiceUrl = _configuration["InventoryService:Url"];
             _channel = GrpcChannel.ForAddress(inventoryServiceUrl);
             _client = new InventoryService.InventoryServiceClient(_channel);
         }
@@ -38,7 +38,7 @@ public class InventoryGrpcClient : IInventoryGrpcClient, IDisposable
         try
         {
             var request = new GetProductRequest { Id = id, Sku = sku ?? "" };
-            var response = await GetClient().GetProductAsync(request);
+            var response = GetClient().GetProduct(request);
             return _mapper.Map<ProductDto>(response);
         }
         catch (RpcException ex) when (ex.StatusCode == StatusCode.NotFound)
