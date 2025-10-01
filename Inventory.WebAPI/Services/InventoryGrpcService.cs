@@ -13,8 +13,11 @@ public class InventoryGrpcService : InventoryServiceProto.InventoryServiceProtoB
     private readonly ILogger<InventoryGrpcService> _logger;
     private readonly IMapper _mapper;
 
-    public InventoryGrpcService(IProductService productService, ICategoryService categoryService,
-                              ILogger<InventoryGrpcService> logger, IMapper mapper)
+    public InventoryGrpcService(
+        IProductService productService, 
+        ICategoryService categoryService,
+        ILogger<InventoryGrpcService> logger, 
+        IMapper mapper)
     {
         _productService = productService;
         _categoryService = categoryService;

@@ -26,4 +26,12 @@ public class OrderItemRepository : RepositoryBase<OrderItem>, IOrderItemReposito
             .Where(oi => oi.ProductSku == productSku)
             .ToListAsync();
     }
+    public async Task<IEnumerable<OrderItem>> GetOrderItemsByProductIdAsync(int productId)
+    {
+        return await Context.OrderItems
+            .Include(oi => oi.Order)
+            .ThenInclude(o => o.Customer)
+            .Where(oi => oi.ProductId == productId)
+            .ToListAsync();
+    }
 }

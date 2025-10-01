@@ -11,12 +11,19 @@ public class OrderItemService : IOrderItemService
     private readonly IOrderItemRepository _orderItemRepository;
     private readonly IOrderRepository _orderRepository;
     private readonly IMapper _mapper;
+    private readonly IInventoryGrpcClient _inventoryGrpcClient;
 
-    public OrderItemService(IOrderItemRepository orderItemRepository, IOrderRepository orderRepository, IMapper mapper)
+    public OrderItemService(
+        IOrderItemRepository orderItemRepository, 
+        IOrderRepository orderRepository, 
+        IMapper mapper,
+        IInventoryGrpcClient inventoryGrpcClient
+        )
     {
         _orderItemRepository = orderItemRepository;
         _orderRepository = orderRepository;
         _mapper = mapper;
+        _inventoryGrpcClient = inventoryGrpcClient;
     }
 
     public async Task<IEnumerable<OrderItemDto>> GetOrderItemsAsync()
@@ -33,6 +40,19 @@ public class OrderItemService : IOrderItemService
 
     public async Task<OrderItemDto> CreateOrderItemAsync(CreateOrderItemDto createOrderItemDto)
     {
+        // Validate product exists in inventory via gRPC
+        var product = await _inventoryGrpcClient.GetProductByIdAsync(createOrderItemDto.ProductId);
+        if (product == null)
+        {
+            throw new ArgumentException($"Product with ID '{createOrderItemDto.ProductId}' not found in inventory.");
+        }
+
+        // Validate order exists
+        if (!await _orderRepository.ExistsAsync(createOrderItemDto.OrderId))
+        {
+            throw new ArgumentException($"Order with ID '{createOrderItemDto.OrderId}' not found.");
+        }
+
         var orderItem = _mapper.Map<OrderItem>(createOrderItemDto);
         var createdOrderItem = await _orderItemRepository.CreateAsync(orderItem);
         return _mapper.Map<OrderItemDto>(createdOrderItem);

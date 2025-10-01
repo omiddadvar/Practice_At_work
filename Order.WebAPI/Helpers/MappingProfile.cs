@@ -5,6 +5,7 @@ using ORDER = Order.WebAPI.Models.Entities.Order;
 
 namespace Order.WebAPI.Helpers;
 
+
 public class MappingProfile : Profile
 {
     public MappingProfile()
@@ -13,11 +14,6 @@ public class MappingProfile : Profile
         CreateMap<Customer, CustomerDto>();
         CreateMap<CreateCustomerDto, Customer>();
         CreateMap<UpdateCustomerDto, Customer>();
-
-        // Product mappings
-        CreateMap<Product, ProductDto>();
-        CreateMap<CreateProductDto, Product>();
-        CreateMap<UpdateProductDto, Product>();
 
         // Order mappings
         CreateMap<ORDER, OrderDto>()

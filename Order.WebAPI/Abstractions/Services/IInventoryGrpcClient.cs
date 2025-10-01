@@ -9,4 +9,7 @@ public interface IInventoryGrpcClient
     Task<CategoryDto?> GetCategoryAsync(int id);
     Task<IEnumerable<CategoryDto>> GetCategoriesAsync();
     Task<IEnumerable<ProductDto>> GetProductsByCategoryAsync(int categoryId);
+    Task<bool> ValidateProductAsync(int productId, string sku);
+    Task<ProductDto?> GetProductByIdAsync(int productId);
+    Task<ProductDto?> GetProductBySkuAsync(string sku);
 }

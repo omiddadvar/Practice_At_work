@@ -117,7 +117,27 @@ public class InventoryGrpcClient : IInventoryGrpcClient, IDisposable
             throw;
         }
     }
+    public async Task<bool> ValidateProductAsync(int productId, string sku)
+    {
+        try
+        {
+            var product = await GetProductAsync(productId, sku);
+            return product != null;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+    public async Task<ProductDto?> GetProductByIdAsync(int productId)
+    {
+        return await GetProductAsync(productId, "");
+    }
 
+    public async Task<ProductDto?> GetProductBySkuAsync(string sku)
+    {
+        return await GetProductAsync(0, sku);
+    }
     public void Dispose()
     {
         _channel?.Dispose();

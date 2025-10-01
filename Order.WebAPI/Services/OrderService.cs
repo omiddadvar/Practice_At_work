@@ -12,14 +12,16 @@ public class OrderService : IOrderService
     private readonly ICustomerRepository _customerRepository;
     private readonly IProductRepository _productRepository;
     private readonly IMapper _mapper;
+    private readonly IInventoryGrpcClient _inventoryGrpcClient;
 
     public OrderService(IOrderRepository orderRepository, ICustomerRepository customerRepository,
-                      IProductRepository productRepository, IMapper mapper)
+                      IProductRepository productRepository, IMapper mapper, IInventoryGrpcClient inventoryGrpcClient)
     {
         _orderRepository = orderRepository;
         _customerRepository = customerRepository;
         _productRepository = productRepository;
         _mapper = mapper;
+        _inventoryGrpcClient = inventoryGrpcClient;
     }
 
     public async Task<IEnumerable<OrderDto>> GetOrdersAsync()
@@ -39,7 +41,6 @@ public class OrderService : IOrderService
         var order = await _orderRepository.GetByOrderNumberAsync(orderNumber);
         return order == null ? null : _mapper.Map<OrderDto>(order);
     }
-
     public async Task<OrderDto> CreateOrderAsync(CreateOrderDto createOrderDto)
     {
         // Validate customer exists
@@ -52,6 +53,41 @@ public class OrderService : IOrderService
         if (createOrderDto.OrderItems == null || !createOrderDto.OrderItems.Any())
         {
             throw new ArgumentException("Order must have at least one item.");
+        }
+
+        // Validate products via gRPC and enrich order items with product data
+        foreach (var itemDto in createOrderDto.OrderItems)
+        {
+            // Get product details from Inventory service
+            var product = await _inventoryGrpcClient.GetProductAsync(itemDto.ProductId, itemDto.ProductSku);
+            if (product == null)
+            {
+                throw new ArgumentException($"Product with ID '{itemDto.ProductId}' and SKU '{itemDto.ProductSku}' not found in inventory.");
+            }
+
+            // Validate that we have consistent data
+            if (itemDto.ProductId != product.Id)
+            {
+                throw new ArgumentException($"Product ID mismatch for SKU '{itemDto.ProductSku}'.");
+            }
+
+            // Use product name from inventory if not provided
+            if (string.IsNullOrEmpty(itemDto.ProductName))
+            {
+                itemDto.ProductName = product.Name;
+            }
+
+            // Use inventory price if not provided or validate price
+            if (itemDto.UnitPrice <= 0)
+            {
+                itemDto.UnitPrice = product.Price;
+            }
+            else if (itemDto.UnitPrice != product.Price)
+            {
+                // You might want to log this or handle price differences
+                //_logger.LogWarning("Order item price {OrderPrice} differs from inventory price {InventoryPrice} for product {ProductId}",
+                //    itemDto.UnitPrice, product.Price, itemDto.ProductId);
+            }
         }
 
         // Generate unique order number
@@ -75,6 +111,7 @@ public class OrderService : IOrderService
         {
             var orderItem = new OrderItem
             {
+                ProductId = itemDto.ProductId, // Store ProductId
                 ProductName = itemDto.ProductName,
                 ProductSku = itemDto.ProductSku,
                 UnitPrice = itemDto.UnitPrice,
