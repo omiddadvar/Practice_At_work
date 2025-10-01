@@ -16,6 +16,7 @@ public class OrderItemDto
 public class CreateOrderItemDto
 {
     public int ProductId { get; set; } 
+    public int OrderId { get; set; } 
     public string ProductSku { get; set; } = string.Empty;
     public string ProductName { get; set; } = string.Empty;
     public decimal UnitPrice { get; set; }
