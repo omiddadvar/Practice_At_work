@@ -22,7 +22,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // AutoMapper
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AllowNullCollections = true;
+    cfg.AllowNullDestinationValues = false;
+
+    cfg.AddProfile<MappingProfile>();
+
+    cfg.AddMaps(typeof(Program).Assembly);
+});
 
 // Repositories
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();

@@ -2,6 +2,7 @@
 using Inventory.WebAPI.Abstractions.Repositories;
 using Inventory.WebAPI.Abstractions.Services;
 using Inventory.WebAPI.Models.DTOs;
+using Inventory.WebAPI.Models.Entities;
 
 namespace Inventory.WebAPI.Services;
 
