@@ -81,6 +81,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGrpcService<InventoryGrpcService>();
+
 
 using (var scope = app.Services.CreateScope())
 {
