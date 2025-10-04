@@ -11,6 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.WebAPI", "Identity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification.Service", "Notification.Service\Notification.Service.csproj", "{1FE3C46E-930D-47D6-8EFC-45E6C29740C1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Native", "Native", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui-Practice", "Native\Maui-Practice\Maui-Practice\Maui-Practice.csproj", "{023A6AEB-4FB1-4202-BF31-E6A0210CB052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui-Practice.Droid", "Native\Maui-Practice\Maui-Practice.Droid\Maui-Practice.Droid.csproj", "{B00C9EF0-0951-4643-B690-23E8BC9FD31F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui-Practice.iOS", "Native\Maui-Practice\Maui-Practice.iOS\Maui-Practice.iOS.csproj", "{007FC5C1-75A8-4BA6-ACFF-8632ADBEFA63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui-Practice.Mac", "Native\Maui-Practice\Maui-Practice.Mac\Maui-Practice.Mac.csproj", "{35D0402E-A750-4FA5-A05C-688759B20139}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui-Practice.WinUI", "Native\Maui-Practice\Maui-Practice.WinUI\Maui-Practice.WinUI.csproj", "{D3FE43CD-CBF8-4C31-825C-0435D0390298}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +45,42 @@ Global
 		{1FE3C46E-930D-47D6-8EFC-45E6C29740C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FE3C46E-930D-47D6-8EFC-45E6C29740C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FE3C46E-930D-47D6-8EFC-45E6C29740C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{023A6AEB-4FB1-4202-BF31-E6A0210CB052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{023A6AEB-4FB1-4202-BF31-E6A0210CB052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{023A6AEB-4FB1-4202-BF31-E6A0210CB052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{023A6AEB-4FB1-4202-BF31-E6A0210CB052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B00C9EF0-0951-4643-B690-23E8BC9FD31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B00C9EF0-0951-4643-B690-23E8BC9FD31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B00C9EF0-0951-4643-B690-23E8BC9FD31F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B00C9EF0-0951-4643-B690-23E8BC9FD31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B00C9EF0-0951-4643-B690-23E8BC9FD31F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B00C9EF0-0951-4643-B690-23E8BC9FD31F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{007FC5C1-75A8-4BA6-ACFF-8632ADBEFA63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007FC5C1-75A8-4BA6-ACFF-8632ADBEFA63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007FC5C1-75A8-4BA6-ACFF-8632ADBEFA63}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{007FC5C1-75A8-4BA6-ACFF-8632ADBEFA63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007FC5C1-75A8-4BA6-ACFF-8632ADBEFA63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007FC5C1-75A8-4BA6-ACFF-8632ADBEFA63}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{35D0402E-A750-4FA5-A05C-688759B20139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D0402E-A750-4FA5-A05C-688759B20139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D0402E-A750-4FA5-A05C-688759B20139}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{35D0402E-A750-4FA5-A05C-688759B20139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D0402E-A750-4FA5-A05C-688759B20139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D0402E-A750-4FA5-A05C-688759B20139}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D3FE43CD-CBF8-4C31-825C-0435D0390298}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D3FE43CD-CBF8-4C31-825C-0435D0390298}.Debug|Any CPU.Build.0 = Debug|x64
+		{D3FE43CD-CBF8-4C31-825C-0435D0390298}.Release|Any CPU.ActiveCfg = Release|x64
+		{D3FE43CD-CBF8-4C31-825C-0435D0390298}.Release|Any CPU.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{023A6AEB-4FB1-4202-BF31-E6A0210CB052} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{B00C9EF0-0951-4643-B690-23E8BC9FD31F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{007FC5C1-75A8-4BA6-ACFF-8632ADBEFA63} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{35D0402E-A750-4FA5-A05C-688759B20139} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D3FE43CD-CBF8-4C31-825C-0435D0390298} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1FCB00F-4282-49A5-B2BE-751D3E18C70E}
