@@ -14,8 +14,8 @@ public class OrderItemService : IOrderItemService
     private readonly IInventoryGrpcClient _inventoryGrpcClient;
 
     public OrderItemService(
-        IOrderItemRepository orderItemRepository, 
-        IOrderRepository orderRepository, 
+        IOrderItemRepository orderItemRepository,
+        IOrderRepository orderRepository,
         IMapper mapper,
         IInventoryGrpcClient inventoryGrpcClient
         )

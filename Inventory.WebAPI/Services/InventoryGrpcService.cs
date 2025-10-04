@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Grpc.Core;
-using Inventory.WebAPI.Protos;
 using Inventory.WebAPI.Abstractions.Services;
 using Inventory.WebAPI.Models.DTOs;
+using Inventory.WebAPI.Protos;
 
 namespace Inventory.WebAPI.Services;
 
@@ -14,9 +14,9 @@ public class InventoryGrpcService : InventoryServiceProto.InventoryServiceProtoB
     private readonly IMapper _mapper;
 
     public InventoryGrpcService(
-        IProductService productService, 
+        IProductService productService,
         ICategoryService categoryService,
-        ILogger<InventoryGrpcService> logger, 
+        ILogger<InventoryGrpcService> logger,
         IMapper mapper)
     {
         _productService = productService;

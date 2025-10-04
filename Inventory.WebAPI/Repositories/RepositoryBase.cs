@@ -1,8 +1,8 @@
-﻿using Inventory.WebAPI.Abstractions.Repositories;
+﻿using System.Linq.Expressions;
+using Inventory.WebAPI.Abstractions.Repositories;
 using Inventory.WebAPI.Data;
 using Inventory.WebAPI.Models.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace Inventory.WebAPI.Repositories;
 

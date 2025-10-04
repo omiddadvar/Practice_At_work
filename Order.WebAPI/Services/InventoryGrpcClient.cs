@@ -1,9 +1,9 @@
-﻿using Grpc.Core;
+﻿using AutoMapper;
+using Grpc.Core;
 using Grpc.Net.Client;
 using Order.WebAPI.Abstractions.Services;
-using Order.WebAPI.Protos;
-using AutoMapper;
 using Order.WebAPI.Models.DTOs;
+using Order.WebAPI.Protos;
 
 namespace Order.WebAPI.Services;
 

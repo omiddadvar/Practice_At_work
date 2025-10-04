@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Inventory.WebAPI.Models.Entities;
 using Microsoft.EntityFrameworkCore;
-using Inventory.WebAPI.Models.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Inventory.WebAPI.Data.EntityConfigurations;
 

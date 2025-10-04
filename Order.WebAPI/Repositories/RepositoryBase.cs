@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Order.WebAPI.Abstractions.Repositories;
 using Order.WebAPI.Data;
 using Order.WebAPI.Models.Entities;
-using System.Linq.Expressions;
 
 namespace Order.WebAPI.Repositories;
 

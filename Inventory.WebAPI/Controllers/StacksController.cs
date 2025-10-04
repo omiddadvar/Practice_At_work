@@ -1,6 +1,5 @@
 ﻿using Inventory.WebAPI.Abstractions.Services;
 using Inventory.WebAPI.Models.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Inventory.WebAPI.Controllers;
