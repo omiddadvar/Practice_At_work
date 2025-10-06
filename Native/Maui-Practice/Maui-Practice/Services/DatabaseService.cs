@@ -1,6 +1,6 @@
 ﻿using Maui_Practice.Abstractions.Services;
+using Maui_Practice.Constants;
 using Maui_Practice.Models;
-using Microsoft.VisualBasic;
 using SQLite;
 
 namespace Maui_Practice.Services;
@@ -13,7 +13,7 @@ public class DatabaseService : IDatabaseService
         if (_database is not null)
             return;
 
-        _database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+        _database = new SQLiteAsyncConnection(DbConstants.DatabasePath, DbConstants.Flags);
 
         await _database.CreateTableAsync<MusicFile>();
         await _database.CreateTableAsync<FavoriteMusic>();

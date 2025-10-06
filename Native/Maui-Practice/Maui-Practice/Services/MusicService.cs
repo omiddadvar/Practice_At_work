@@ -1,4 +1,5 @@
 ﻿using Maui_Practice.Abstractions.Services;
+using Maui_Practice.Constants;
 using Maui_Practice.Models;
 using Microsoft.VisualBasic;
 
@@ -49,7 +50,7 @@ public class MusicService : IMusicService
                 if (!Directory.Exists(folder)) continue;
 
                 var files = Directory.GetFiles(folder, "*.*", SearchOption.AllDirectories)
-                    .Where(file => Constants.SupportedFormats.Any(format =>
+                    .Where(file => DeviceRelatedConstants.SupportedFormats.Any(format =>
                         file.EndsWith(format, StringComparison.OrdinalIgnoreCase)));
 
                 foreach (var file in files)
