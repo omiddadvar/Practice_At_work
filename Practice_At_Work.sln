@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.WebAPI", "Identity
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification.Service", "Notification.Service\Notification.Service.csproj", "{1FE3C46E-930D-47D6-8EFC-45E6C29740C1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ALPR", "ALPR", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALPR", "ALPR\ALPR\ALPR.csproj", "{8E3C376A-94BA-445F-A281-ACD6EF79D103}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,16 @@ Global
 		{1FE3C46E-930D-47D6-8EFC-45E6C29740C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FE3C46E-930D-47D6-8EFC-45E6C29740C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FE3C46E-930D-47D6-8EFC-45E6C29740C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3C376A-94BA-445F-A281-ACD6EF79D103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3C376A-94BA-445F-A281-ACD6EF79D103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3C376A-94BA-445F-A281-ACD6EF79D103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3C376A-94BA-445F-A281-ACD6EF79D103}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8E3C376A-94BA-445F-A281-ACD6EF79D103} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1FCB00F-4282-49A5-B2BE-751D3E18C70E}
